@@ -16,7 +16,8 @@ RUN gradle dependencies
 COPY . .
 
 # Construye la aplicación, creando un "fat JAR" que contiene todo lo necesario
-RUN gradle build -x test
+# FIX: Se añade un mecanismo de reintento para sobrevivir a fallos de red intermitentes en Render.
+RUN gradle build -x test || (echo "Build failed, retrying after 5s..." && sleep 5 && gradle build -x test) || (echo "Build failed, retrying after 10s..." && sleep 10 && gradle build -x test)
 
 # --- Fase 2: Ejecución ---
 # Usa una imagen base mucho más ligera solo con Java para ejecutar la app
