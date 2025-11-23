@@ -18,7 +18,7 @@ dependencies {
     implementation(libs.postgresql)
     implementation(libs.h2)
     implementation(libs.ktor.server.auth)
-    implementation(libs.firebase.auth.provider)
+    // implementation(libs.firebase.auth.provider) // Conflicting dependency removed
     implementation(libs.ktor.server.auth.jwt)
     implementation(libs.ktor.server.netty)
     implementation(libs.logback.classic)
