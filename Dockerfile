@@ -20,7 +20,8 @@ RUN gradle build -x test
 
 # --- Fase 2: Ejecución ---
 # Usa una imagen base mucho más ligera solo con Java para ejecutar la app
-FROM openjdk:17-alpine
+# FIX: Se actualiza a una imagen de Eclipse Temurin, más moderna y disponible.
+FROM eclipse-temurin:17-jdk-alpine
 
 # Expone el puerto 8080 (aunque Render lo sobreescribirá con la variable PORT)
 EXPOSE 8080
